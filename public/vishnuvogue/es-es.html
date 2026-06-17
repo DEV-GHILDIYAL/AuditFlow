@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishnuvogue - Spain (Español)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    h1, h2, h3, .vogue-font { font-family: 'Playfair Display', serif; }
+    .fade-in { animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-glow {
+      box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body class="bg-[#07090e] text-gray-200 min-h-screen flex flex-col selection:bg-amber-500/30 selection:text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#090b11]/85 backdrop-blur-md border-b border-gray-900 transition-all duration-355 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-2 group">
+        <span class="text-xl md:text-2xl font-extrabold tracking-widest uppercase text-amber-500 vogue-font transition-all duration-300 group-hover:text-amber-400">Vishnuvogue</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-gray-400">
+        <a href="#" class="hover:text-amber-500 transition-all duration-200">Inicio</a>
+        <a href="#collection" class="hover:text-amber-500 transition-all duration-200">Colección</a>
+        <a href="#pillars" class="hover:text-amber-500 transition-all duration-200">Pillars</a>
+        <a href="#about" class="hover:text-amber-500 transition-all duration-200">Nosotros</a>
+        <a href="#faq" class="hover:text-amber-500 transition-all duration-200">FAQ</a>
+        <a href="#contact" class="hover:text-amber-500 transition-all duration-200">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section with Custom Background Image Overlay -->
+  <section class="relative h-[85vh] bg-cover bg-center flex flex-col items-center justify-center text-center px-6 overflow-hidden hero-glow border-b border-gray-950" style="background-image: url('hero.png');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#07090e]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.06),transparent_70%)]"></div>
+    
+    <div class="max-w-3xl relative z-10 fade-in">
+      <span class="text-xs uppercase tracking-widest text-amber-500 font-bold bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20">Mumbai Haute Couture</span>
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mt-6 mb-6 leading-tight select-none">Vishnuvogue: Alta Costura de Dharavi</h1>
+      <p class="text-gray-300 text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed opacity-90">Diseños artesanales exclusivos que fusionan el alma de Bombay con la moda urbana europea.</p>
+      <div>
+        <a 
+          href="http://localhost:5173/vishnuvogue/es-es.html" 
+          class="inline-flex items-center justify-center px-8 py-4 border border-amber-500 bg-amber-500 text-black hover:bg-transparent hover:text-amber-500 font-bold rounded text-xs uppercase tracking-widest transition-all duration-300 shadow-xl shadow-amber-500/10 hover:scale-[1.03] hover:shadow-amber-500/20"
+        >
+          Ver Colección
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Pillars (Cool new values section) -->
+  <section id="pillars" class="py-24 px-6 max-w-7xl mx-auto w-full border-b border-gray-950">
+    <div class="text-center mb-16">
+      <span class="text-xs text-amber-500 uppercase tracking-widest font-bold font-mono">Our Craft Pillars</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide mt-2">Built On Pure Traditions</h2>
+      <div class="h-1 w-12 bg-amber-500 mx-auto mt-4 rounded"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Pillar 1 -->
+      <div class="bg-[#0b101c]/40 border border-gray-900/60 p-8 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+        <span class="text-3xl block mb-4">🪡</span>
+        <h3 class="text-white font-bold text-lg mb-3">Integridad Artesanal</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Cada prenda es confeccionada individualmente por sastres locales en Dharavi, Bombay.</p>
+      </div>
+      <!-- Pillar 2 -->
+      <div class="bg-[#0b101c]/40 border border-gray-900/60 p-8 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+        <span class="text-3xl block mb-4">🌿</span>
+        <h3 class="text-white font-bold text-lg mb-3">Tejidos Orgánicos</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Utilizamos lino orgánico, seda de morera y algodón khadi ligero de alta calidad.</p>
+      </div>
+      <!-- Pillar 3 -->
+      <div class="bg-[#0b101c]/40 border border-gray-900/60 p-8 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+        <span class="text-3xl block mb-4">✂️</span>
+        <h3 class="text-white font-bold text-lg mb-3">Sastrería Personal</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Ajustado a sus medidas y gustos estéticos bajo la supervisión de Deepak Mahato.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collection Showcase -->
+  <section id="collection" class="py-24 px-6 max-w-7xl mx-auto w-full">
+    <div class="text-center mb-16">
+      <span class="text-xs text-amber-500 uppercase tracking-widest font-bold font-mono">Catálogo de Temporada</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide mt-2">Colecciones selectas que capturan el espíritu de la moda callejera de Bombay y el legado real</h2>
+      <div class="h-1 w-12 bg-amber-500 mx-auto mt-4 rounded"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- Item 1 -->
+      <div class="bg-[#0e121f] border border-gray-900 rounded-xl overflow-hidden group hover:border-amber-500/30 transition-all duration-300 shadow-2xl flex flex-col hover:-translate-y-1">
+        <div class="h-[340px] bg-slate-950 overflow-hidden relative">
+          <img src="kurta.png" alt="Kurtas de Diseño" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07090e]/95 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 text-xs font-bold uppercase tracking-widest text-amber-500 bg-[#07090e]/85 px-3 py-1 rounded border border-gray-800">Precio bajo petición</span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-white font-semibold text-lg mb-2 vogue-font">Kurtas de Diseño</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Pure handloom cotton Kurtas featuring delicate golden embroidery and organic details, custom made for formal wear.</p>
+          </div>
+          <a href="#contact" class="mt-5 text-xs font-semibold text-amber-500 hover:text-amber-400 flex items-center gap-1 uppercase tracking-widest group-hover:translate-x-1 transition-transform">Inquire Now →</a>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="bg-[#0e121f] border border-gray-900 rounded-xl overflow-hidden group hover:border-amber-500/30 transition-all duration-300 shadow-2xl flex flex-col hover:-translate-y-1">
+        <div class="h-[340px] bg-slate-950 overflow-hidden relative">
+          <img src="shirt.png" alt="Camisas Bordadas" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07090e]/95 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 text-xs font-bold uppercase tracking-widest text-amber-500 bg-[#07090e]/85 px-3 py-1 rounded border border-gray-800">Precio bajo petición</span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-white font-semibold text-lg mb-2 vogue-font">Camisas Bordadas</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Luxury hand-spun summer linen shirts with micro-tailoring. Highly breathable, elegant cuts perfect for global summers.</p>
+          </div>
+          <a href="#contact" class="mt-5 text-xs font-semibold text-amber-500 hover:text-amber-400 flex items-center gap-1 uppercase tracking-widest group-hover:translate-x-1 transition-transform">Inquire Now →</a>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="bg-[#0e121f] border border-gray-900 rounded-xl overflow-hidden group hover:border-amber-500/30 transition-all duration-300 shadow-2xl flex flex-col hover:-translate-y-1">
+        <div class="h-[340px] bg-slate-950 overflow-hidden relative">
+          <img src="streetwear.png" alt="Estilo Urbano Moderno" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07090e]/95 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 text-xs font-bold uppercase tracking-widest text-amber-500 bg-[#07090e]/85 px-3 py-1 rounded border border-gray-800">Precio bajo petición</span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-white font-semibold text-lg mb-2 vogue-font">Estilo Urbano Moderno</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Contemporary fusion jackets combining raw Indian handloom textiles and streetwear contours for a bold statement.</p>
+          </div>
+          <a href="#contact" class="mt-5 text-xs font-semibold text-amber-500 hover:text-amber-400 flex items-center gap-1 uppercase tracking-widest group-hover:translate-x-1 transition-transform">Inquire Now →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-[#090b11] py-24 px-6 border-y border-gray-950">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="text-xs text-amber-500 uppercase tracking-widest font-bold font-mono">Dharavi Creative Hub</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 mt-2 leading-tight">Sobre el Creador</h2>
+        <div class="h-1 w-12 bg-amber-500 mb-6 rounded"></div>
+        <p class="text-gray-450 text-sm leading-relaxed mb-4 opacity-90">Iniciada por Deepak Mahato en el corazón de Dharavi, Bombay. Vishnuvogue lleva la moda india premium a una audiencia global.</p>
+        <p class="text-gray-300 text-sm leading-relaxed font-semibold">
+          <span class="text-slate-500">Propietario:</span> Deepak Mahato
+        </p>
+      </div>
+      <div class="relative bg-[#0b0e17] p-8 border border-gray-900 rounded-2xl flex flex-col justify-center h-64 text-center shadow-lg">
+        <div class="text-amber-500/5 font-outfit font-extrabold text-9xl select-none absolute top-4 left-4">VV</div>
+        <p class="italic text-sm text-gray-300 relative z-10 leading-relaxed font-outfit">
+          "Our brand Vishnuvogue thrives in Dharavi. We weave dreams, tradition, and global fashion into every single thread."
+        </p>
+        <span class="text-xs text-amber-500 mt-6 block font-bold relative z-10">- Deepak Mahato</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-24 px-6 max-w-7xl mx-auto w-full border-b border-gray-950">
+    <div class="text-center mb-16">
+      <span class="text-xs text-amber-500 uppercase tracking-widest font-bold font-mono">Elogios Globales</span>
+      <h2 class="text-3xl font-bold text-white mt-2">Word of Mouth</h2>
+      <div class="h-1 w-12 bg-amber-500 mx-auto mt-4 rounded"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="p-6 rounded-xl border border-gray-900 bg-[#0c101c]/50 shadow-md">
+        <p class="text-xs text-slate-300 italic leading-relaxed">“El bordado del Kurta es absolutamente impresionante. Se puede sentir la artesanía de Dharavi en cada costura.”</p>
+        <span class="block text-[11px] font-bold text-amber-500 mt-4">Sarah Jenkins, Crítica de Moda de Nueva York</span>
+      </div>
+      <div class="p-6 rounded-xl border border-gray-900 bg-[#0c101c]/50 shadow-md">
+        <p class="text-xs text-slate-300 italic leading-relaxed">“Las camisas de lino de Vishnuvogue son mi prenda básica de verano. Ligeras, transpirables y de gran sastrería.”</p>
+        <span class="block text-[11px] font-bold text-amber-500 mt-4">David Miller, Diseñador de Londres</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accordion FAQ Section -->
+  <section id="faq" class="bg-[#090b11] py-24 px-6">
+    <div class="max-w-3xl mx-auto w-full">
+      <div class="text-center mb-12">
+        <span class="text-xs text-amber-500 uppercase tracking-widest font-bold font-mono">Inquiries</span>
+        <h2 class="text-3xl font-bold text-white mt-2">Preguntas Frecuentes</h2>
+        <div class="h-1 w-12 bg-amber-500 mx-auto mt-4 rounded"></div>
+      </div>
+      
+      <div class="flex flex-col gap-4">
+        <details class="group bg-[#0b101c]/60 border border-gray-900 rounded-xl p-5 transition-all hover:border-amber-500/25">
+          <summary class="font-semibold text-sm text-white cursor-pointer flex justify-between items-center select-none">
+            <span>¿Qué materiales utilizan?</span>
+            <span class="text-amber-500 transition-transform duration-300 group-open:rotate-180">↓</span>
+          </summary>
+          <p class="mt-3 text-xs text-gray-450 leading-relaxed pt-2 border-t border-gray-900">Utilizamos algodón 100% orgánico, lino hilado a mano y seda natural Mulberry obtenida éticamente.</p>
+        </details>
+
+        <details class="group bg-[#0b101c]/60 border border-gray-900 rounded-xl p-5 transition-all hover:border-amber-500/25">
+          <summary class="font-semibold text-sm text-white cursor-pointer flex justify-between items-center select-none">
+            <span>¿Hacen envíos internacionales?</span>
+            <span class="text-amber-500 transition-transform duration-300 group-open:rotate-180">↓</span>
+          </summary>
+          <p class="mt-3 text-xs text-gray-450 leading-relaxed pt-2 border-t border-gray-900">Sí, enviamos a todo el mundo desde Bombay. Los gastos de envío se calculan en la pantalla de pago.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 px-6 max-w-7xl mx-auto w-full border-t border-gray-950">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-amber-500 font-bold">Contacto</span>
+        <h2 class="text-3xl font-bold text-white mt-2 mb-4">Contáctanos</h2>
+        <p class="text-gray-400 text-xs max-w-md leading-relaxed mb-8">
+          Have inquiries regarding custom sizing, designer Kurta tailoring, or wholesale exports? Drop us a line.
+        </p>
+        
+        <div class="flex flex-col gap-5 text-sm">
+          <div class="flex items-start gap-4">
+            <span class="text-amber-500 font-bold text-lg">📍</span>
+            <div>
+              <h4 class="text-xs text-slate-500 font-bold uppercase tracking-wider">Atelier Address</h4>
+              <p class="text-gray-300 mt-1 text-xs leading-relaxed max-w-xs">
+                Shop number 9 block number 11 transit camp rajiv gandhi nagar dharavi mumbai -400017
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-amber-500 font-bold text-lg">📞</span>
+            <div>
+              <h4 class="text-xs text-slate-500 font-bold uppercase tracking-wider">Contact Number</h4>
+              <a href="tel:8591328441" class="text-gray-300 mt-1 inline-block hover:text-amber-500 transition-colors text-xs font-semibold">8591328441</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Contact Form -->
+      <div class="bg-[#0b101c]/30 border border-gray-900 p-8 rounded-2xl shadow-xl relative overflow-hidden">
+        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="flex flex-col gap-4">
+          <div>
+            <label class="text-[10px] uppercase tracking-wider text-slate-550 font-bold block mb-1.5">Nombre Completo</label>
+            <input required type="text" class="w-full bg-[#06080d] border border-gray-800 rounded px-4 py-2.5 text-xs text-white outline-none focus:border-amber-500/50 transition-colors" />
+          </div>
+          <div>
+            <label class="text-[10px] uppercase tracking-wider text-slate-550 font-bold block mb-1.5">Correo Electrónico</label>
+            <input required type="email" class="w-full bg-[#06080d] border border-gray-800 rounded px-4 py-2.5 text-xs text-white outline-none focus:border-amber-500/50 transition-colors" />
+          </div>
+          <div>
+            <label class="text-[10px] uppercase tracking-wider text-slate-550 font-bold block mb-1.5">Cuéntanos sobre tus preferencias de estilo...</label>
+            <textarea required rows="4" class="w-full bg-[#06080d] border border-gray-800 rounded px-4 py-2.5 text-xs text-white outline-none focus:border-amber-500/50 transition-colors resize-none"></textarea>
+          </div>
+          <button 
+            type="submit" 
+            class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded text-xs uppercase tracking-wider transition-colors hover:scale-[1.01]"
+          >
+            Enviar Mensaje
+          </button>
+        </form>
+
+        <!-- Mock Success Modal overlay with smooth transition -->
+        <div id="successModal" class="absolute inset-0 bg-[#090b11] flex flex-col items-center justify-center text-center p-6 translate-x-full transition-transform duration-500 ease-in-out">
+          <div class="p-3 rounded-full bg-emerald-500/10 text-emerald-400 mb-4">
+            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h4 class="text-white font-bold text-base mb-2">Message Dispatched</h4>
+          <p class="text-xs text-gray-400 max-w-xs leading-relaxed mb-6">¡Gracias! Deepak Mahato se pondrá en contacto contigo pronto.</p>
+          <button 
+            type="button"
+            onClick="closeModal()" 
+            class="px-5 py-2 rounded bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-350 hover:text-white"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-900 bg-[#05060a] py-8 text-center text-[10px] text-gray-500 mt-auto">
+    <p>© 2026 Vishnuvogue. Curated under the supervision of Deepak Mahato. All rights reserved.</p>
+  </footer>
+
+  <!-- Mock script to simulate dynamic interactions -->
+  <script>
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const modal = document.getElementById('successModal');
+      modal.classList.remove('translate-x-full');
+      modal.classList.add('translate-x-0');
+      document.getElementById('contactForm').reset();
+    }
+    
+    function closeModal() {
+      const modal = document.getElementById('successModal');
+      modal.classList.remove('translate-x-0');
+      modal.classList.add('translate-x-full');
+    }
+  </script>
+
+</body>
+</html>
