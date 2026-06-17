@@ -287,8 +287,11 @@ function App() {
       </main>
       
       <footer className="border-t border-darkBorder py-6 text-center text-[10px] text-slate-500 bg-darkCard/20">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p>© 2026 AuditFlow System. Built for automated digital layout and copy compliance.</p>
+          <p className="font-medium text-slate-400">
+            Developed by <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-bold">DEV GHILDIYAL</span>
+          </p>
         </div>
       </footer>
     </div>
