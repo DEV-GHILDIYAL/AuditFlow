@@ -2,20 +2,22 @@ const XLSX = require('xlsx');
 
 // 10 localized audit rows corresponding to the generated website files
 const data = [
-  // Headers matching standard AuditFlow irregular structures requirement
+  // Headers matching Phase 4 columns
   [
     "Country", 
     "Language", 
+    "Url",
     "Placement", 
     "Pattern", 
     "Heading copy", 
     "Body copy", 
     "Call to action copy", 
-    "Link to website"
+    "Link to"
   ],
   [
     "United States",
     "English",
+    "http://localhost:5173/vishnuvogue/us-en.html",
     "Hero Section",
     "hero-v1",
     "Vishnuvogue: Dharavi's Finest Vogue",
@@ -26,16 +28,18 @@ const data = [
   [
     "India",
     "Hindi",
+    "http://localhost:5173/vishnuvogue/in-hi.html",
     "Hero Section",
     "hero-v1",
     "विष्णुवोग: धारावी का बेहतरीन परिधान",
-    "मुंबई के समृद्ध हस्तशिल्प और समकालीन वैश्विक डिजाइनों का एक सुंदर मिश्रण, विशेष रूप से तैयार किया गया।",
+    "मुंबई के समृद्ध हस्तशिल्प और समकालीन वैश्विक डिजائनों का एक सुंदर मिश्रण, विशेष रूप से तैयार किया गया।",
     "संग्रह का अन्वेषण करें",
     "http://localhost:5173/vishnuvogue/in-hi.html"
   ],
   [
     "United Kingdom",
     "English",
+    "http://localhost:5173/vishnuvogue/uk-en.html",
     "Hero Section",
     "hero-v1",
     "Vishnuvogue: London's Dharavi Edit",
@@ -46,6 +50,7 @@ const data = [
   [
     "France",
     "French",
+    "http://localhost:5173/vishnuvogue/fr-fr.html",
     "Hero Section",
     "hero-v1",
     "Vishnuvogue: L'art du textile de Dharavi",
@@ -56,6 +61,7 @@ const data = [
   [
     "Germany",
     "German",
+    "http://localhost:5173/vishnuvogue/de-de.html",
     "Hero Section",
     "hero-v1",
     "Vishnuvogue: Dharavis Premium Textilien",
@@ -66,6 +72,7 @@ const data = [
   [
     "Spain",
     "Spanish",
+    "http://localhost:5173/vishnuvogue/es-es.html",
     "Hero Section",
     "hero-v1",
     "Vishnuvogue: Alta Costura de Dharavi",
@@ -76,6 +83,7 @@ const data = [
   [
     "Italy",
     "Italian",
+    "http://localhost:5173/vishnuvogue/it-it.html",
     "Hero Section",
     "hero-v1",
     "Vishnuvogue: Sartoria Dharavi di Lusso",
@@ -86,6 +94,7 @@ const data = [
   [
     "Japan",
     "Japanese",
+    "http://localhost:5173/vishnuvogue/jp-ja.html",
     "Hero Section",
     "hero-v1",
     "ヴィシュヌヴォーグ：ムンバイの極上布地",
@@ -96,6 +105,7 @@ const data = [
   [
     "United Arab Emirates",
     "Arabic",
+    "http://localhost:5173/vishnuvogue/ae-ar.html",
     "Hero Section",
     "hero-v1",
     "فيشنوفوغ: أقمشة دهراري الفاخرة",
@@ -106,6 +116,7 @@ const data = [
   [
     "Australia",
     "English",
+    "http://localhost:5173/vishnuvogue/au-en.html",
     "Hero Section",
     "hero-v1",
     "Vishnuvogue: Heritage Couture of Mumbai",
@@ -117,6 +128,6 @@ const data = [
 
 const ws = XLSX.utils.aoa_to_sheet(data);
 const wb = XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(wb, ws, "Vishnuvogue Audit");
+XLSX.utils.book_append_sheet(wb, ws, "Data");
 XLSX.writeFile(wb, "vishnuvogue_audit.xlsx");
 console.log("Successfully created vishnuvogue_audit.xlsx");

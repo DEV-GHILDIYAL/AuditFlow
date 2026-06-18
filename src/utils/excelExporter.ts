@@ -27,12 +27,13 @@ export function exportAuditResults(
     return {
       Country: row.Country,
       Language: row.Language,
+      Url: row.Url,
       Placement: row.Placement,
       Pattern: row.Pattern,
       'Heading copy': row['Heading copy'],
       'Body copy': row['Body copy'],
       'Call to action copy': row['Call to action copy'],
-      'Link to website': row['Link to website'],
+      'Link to': row['Link to'],
       'Heading Check': getStatusText(res?.heading, res?.status, res?.error),
       'Body Check': getStatusText(res?.body, res?.status, res?.error),
       'CTA Text Check': getStatusText(res?.ctaText, res?.status, res?.error),
@@ -43,7 +44,7 @@ export function exportAuditResults(
   const wsReport = XLSX.utils.json_to_sheet(reportData);
 
   // Auto-width columns for clean display
-  const colHeaders = ['Country', 'Language', 'Placement', 'Pattern', 'Heading copy', 'Body copy', 'Call to action copy', 'Link to website', 'Heading Check', 'Body Check', 'CTA Text Check', 'CTA URL Check'];
+  const colHeaders = ['Country', 'Language', 'Url', 'Placement', 'Pattern', 'Heading copy', 'Body copy', 'Call to action copy', 'Link to', 'Heading Check', 'Body Check', 'CTA Text Check', 'CTA URL Check'];
   wsReport['!cols'] = colHeaders.map(col => ({
     wch: Math.max(col.length + 3, 16)
   }));

@@ -86,21 +86,21 @@ export function getVisibleText(node: Node): string {
  * Runs the compliance audits for a single parsed row by fetching its URL.
  */
 export async function runAuditForRow(row: ParsedRow): Promise<AuditResult> {
-  const targetLink = row['Link to website'];
+  const targetUrlColumn = row['Url'];
 
   // Check 1: Empty website URL cell -> Skip row, mark all checks as Skipped
-  if (!targetLink || targetLink.trim() === '') {
+  if (!targetUrlColumn || targetUrlColumn.trim() === '') {
     return {
       status: 'skipped',
       heading: 'skipped',
       body: 'skipped',
       ctaText: 'skipped',
       ctaUrl: 'skipped',
-      error: 'Skipped: Link to website is empty'
+      error: 'Skipped: Url is empty'
     };
   }
 
-  const targetUrl = normalizeUrl(targetLink);
+  const targetUrl = normalizeUrl(targetUrlColumn);
   const isLocalhost = targetUrl.includes('localhost') || targetUrl.includes('127.0.0.1');
   const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
 
@@ -195,7 +195,7 @@ export async function runAuditForRow(row: ParsedRow): Promise<AuditResult> {
 
     const ctaTextPass = targetCta === '' ? true : matchingCtaElements.length > 0;
 
-    // Button URL Check: does at least one matching CTA element point to the correct Link to website?
+    // Button URL Check: does at least one matching CTA element point to the correct Link to?
     // Relative paths are resolved against targetUrl inside compareUrls
     let ctaUrlPass = false;
     if (targetCta === '') {
@@ -209,7 +209,7 @@ export async function runAuditForRow(row: ParsedRow): Promise<AuditResult> {
         if (!href) {
           href = el.getAttribute('data-href') || '';
         }
-        return compareUrls(href, targetLink, targetUrl);
+        return compareUrls(href, row['Link to'], targetUrl);
       });
     }
 

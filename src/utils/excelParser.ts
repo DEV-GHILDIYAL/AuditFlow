@@ -3,12 +3,13 @@ import * as XLSX from 'xlsx';
 export interface ParsedRow {
   Country: string;
   Language: string;
+  Url: string;
   Placement: string;
   Pattern: string;
   'Heading copy': string;
   'Body copy': string;
   'Call to action copy': string;
-  'Link to website': string;
+  'Link to': string;
   [key: string]: string; // Fallback index signature
 }
 
@@ -20,12 +21,13 @@ export interface ParseResult {
 const REQUIRED_HEADERS = [
   'Country',
   'Language',
+  'Url',
   'Placement',
   'Pattern',
   'Heading copy',
   'Body copy',
   'Call to action copy',
-  'Link to website'
+  'Link to'
 ];
 
 /**
@@ -37,10 +39,9 @@ function isBlankRow(row: any[]): boolean {
 }
 
 /**
- * Parses an Excel file with irregular structure.
- * Scans top-to-bottom for the header row containing all 8 required columns (case-insensitive).
- * Subsequent rows are parsed as data until a blank row is met.
- * Continues scanning for additional header rows and sections.
+ * Parses an Excel file targeting specifically the sheet named "Data".
+ * Scans Row 1 for headers containing all 9 required columns (case-insensitive).
+ * Subsequent rows are parsed as data from Row 2 onwards until a completely blank row is encountered.
  */
 export function parseExcelFile(file: File): Promise<ParseResult> {
   return new Promise((resolve, reject) => {
@@ -54,71 +55,65 @@ export function parseExcelFile(file: File): Promise<ParseResult> {
         }
 
         const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
+        const sheet = workbook.Sheets['Data'];
 
         if (!sheet) {
-          throw new Error('The workbook contains no sheets.');
+          throw new Error("No 'Data' sheet found in this workbook.");
         }
 
         // Convert the sheet to a 2D array, preserving empty cells as empty strings
         const rows = XLSX.utils.sheet_to_json<any[]>(sheet, { header: 1, defval: '' });
 
-        const parsedData: ParsedRow[] = [];
-        let sectionCount = 0;
-        let isParsingData = false;
-        
-        // Maps lowercased required header to its index in the current header row
-        let headerIndexMap: Record<string, number> = {};
+        if (rows.length === 0) {
+          throw new Error('The workbook sheet is empty.');
+        }
 
-        for (let r = 0; r < rows.length; r++) {
+        // Row 1 (index 0) contains the headers
+        const headerRow = rows[0];
+        const rowStringsLower = headerRow.map(cell => 
+          cell !== undefined && cell !== null ? String(cell).trim().toLowerCase() : ''
+        );
+
+        const hasAllHeaders = REQUIRED_HEADERS.every(reqHeader => 
+          rowStringsLower.includes(reqHeader.toLowerCase())
+        );
+
+        if (!hasAllHeaders) {
+          throw new Error('Invalid sheet headers. Missing required columns.');
+        }
+
+        // Build mapping of lowercase required header -> column index
+        const headerIndexMap: Record<string, number> = {};
+        REQUIRED_HEADERS.forEach(reqHeader => {
+          const targetLower = reqHeader.toLowerCase();
+          const index = rowStringsLower.indexOf(targetLower);
+          headerIndexMap[targetLower] = index;
+        });
+
+        const parsedData: ParsedRow[] = [];
+
+        // Parse from Row 2 (index 1) onwards as data rows
+        for (let r = 1; r < rows.length; r++) {
           const row = rows[r];
 
-          if (!isParsingData) {
-            // Scan for header row containing all REQUIRED_HEADERS (case-insensitive)
-            const rowStringsLower = row.map(cell => 
-              cell !== undefined && cell !== null ? String(cell).trim().toLowerCase() : ''
-            );
-
-            const hasAllHeaders = REQUIRED_HEADERS.every(reqHeader => 
-              rowStringsLower.includes(reqHeader.toLowerCase())
-            );
-
-            if (hasAllHeaders) {
-              // Found a header row! Build mapping of lowercase required header -> column index
-              headerIndexMap = {};
-              REQUIRED_HEADERS.forEach(reqHeader => {
-                const targetLower = reqHeader.toLowerCase();
-                const index = rowStringsLower.indexOf(targetLower);
-                headerIndexMap[targetLower] = index;
-              });
-
-              isParsingData = true;
-              sectionCount++;
-            }
-          } else {
-            // Currently parsing data rows for a section
-            if (isBlankRow(row)) {
-              // A blank row ends the current section's data rows
-              isParsingData = false;
-              headerIndexMap = {};
-            } else {
-              // Map the row data back to the original casing of the REQUIRED_HEADERS
-              const dataRow: any = {};
-              REQUIRED_HEADERS.forEach(reqHeader => {
-                const colIdx = headerIndexMap[reqHeader.toLowerCase()];
-                const cellVal = row[colIdx];
-                dataRow[reqHeader] = cellVal !== undefined && cellVal !== null ? String(cellVal).trim() : '';
-              });
-
-              parsedData.push(dataRow as ParsedRow);
-            }
+          if (isBlankRow(row)) {
+            // Stop at first completely blank row
+            break;
           }
+
+          const dataRow: any = {};
+          REQUIRED_HEADERS.forEach(reqHeader => {
+            const colIdx = headerIndexMap[reqHeader.toLowerCase()];
+            const cellVal = row[colIdx];
+            dataRow[reqHeader] = cellVal !== undefined && cellVal !== null ? String(cellVal).trim() : '';
+          });
+
+          parsedData.push(dataRow as ParsedRow);
         }
 
         resolve({
           data: parsedData,
-          sectionCount
+          sectionCount: 1 // Sections no longer exist, hardcode to 1
         });
       } catch (err) {
         reject(err instanceof Error ? err : new Error(String(err)));

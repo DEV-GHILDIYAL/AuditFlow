@@ -147,7 +147,8 @@ export const PreviewTable: React.FC<PreviewTableProps> = ({
                 <th className="py-3 px-240 w-[240px]">Heading Copy</th>
                 <th className="py-3 px-300 w-[300px]">Body Copy</th>
                 <th className="py-3 px-4 w-[180px]">Call To Action Copy</th>
-                <th className="py-3 px-4 w-[180px]">Link To Website</th>
+                <th className="py-3 px-4 w-[180px]">Url</th>
+                <th className="py-3 px-4 w-[180px]">Link To</th>
                 <th className="py-3 px-4 w-[110px] bg-slate-950/40 border-l border-darkBorder/40">Heading</th>
                 <th className="py-3 px-4 w-[110px] bg-slate-950/40">Body</th>
                 <th className="py-3 px-4 w-[110px] bg-slate-950/40">CTA Text</th>
@@ -203,21 +204,24 @@ export const PreviewTable: React.FC<PreviewTableProps> = ({
                       </div>
                     </td>
                     <td className="py-3 px-4">
-                      {row['Link to website'] ? (
+                      {row.Url ? (
                         <a 
-                          href={row['Link to website'].startsWith('http') ? row['Link to website'] : `https://${row['Link to website']}`}
+                          href={row.Url.startsWith('http') ? row.Url : `https://${row.Url}`}
                           target="_blank" 
                           rel="noreferrer"
                           className="inline-flex items-center gap-1 text-slate-450 hover:text-blue-400 transition-colors group/link"
                         >
                           <Link2 className="h-3 w-3 text-slate-500 group-hover/link:text-blue-400" />
                           <span className="truncate max-w-[130px] inline-block underline decoration-slate-800 hover:decoration-blue-500">
-                            {row['Link to website']}
+                            {row.Url}
                           </span>
                         </a>
                       ) : (
                         <span className="text-slate-600">-</span>
                       )}
+                    </td>
+                    <td className="py-3 px-4 truncate text-slate-350">
+                      {row['Link to'] || '-'}
                     </td>
                     
                     {/* Audit Badges */}

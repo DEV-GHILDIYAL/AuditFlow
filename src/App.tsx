@@ -6,7 +6,7 @@ import { Stats } from './components/Stats';
 import { parseExcelFile, type ParsedRow } from './utils/excelParser';
 import { runAuditForRow, type AuditResult } from './utils/auditEngine';
 import { exportAuditResults } from './utils/excelExporter';
-import { FileSpreadsheet, Sparkles, RefreshCw } from 'lucide-react';
+import { FileSpreadsheet, RefreshCw } from 'lucide-react';
 
 function App() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -214,23 +214,7 @@ function App() {
       <Header />
       
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8">
-        {/* Intro Banner */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-blue-950/20 to-purple-950/20 p-6 rounded-2xl border border-blue-950/40">
-          <div>
-            <h1 className="text-2xl font-extrabold tracking-tight font-outfit text-white flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-blue-400" />
-              Content Audit Module
-            </h1>
-            <p className="text-slate-400 text-xs mt-1 max-w-xl">
-              AuditFlow inspects content layouts. In Phase 3, we add retry actions, sticky column freezing, AbortController timeouts, and full Excel summary exports.
-            </p>
-          </div>
-          <div className="flex items-center gap-2 self-start md:self-center">
-            <span className="text-xs px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-medium">
-              Phase 3 Active
-            </span>
-          </div>
-        </div>
+
 
         {/* Upload & Stats Controls grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
